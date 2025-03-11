@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      PostAquaticDirect.hasMany(models.ImagePostAquaticDirect, {
+        foreignKey: { name: "postAquaticDirect_id", allowNull: true },
+        onDelete: "CASCADE",
+      });
     }
   }
   PostAquaticDirect.init({

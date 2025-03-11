@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      PostDiasporaFund.hasMany(models.ImagePostDiasporaFund, {
+        foreignKey: { name: "postDiasporaFund_id", allowNull: true },
+        onDelete: "CASCADE",
+      });
     }
   }
   PostDiasporaFund.init({

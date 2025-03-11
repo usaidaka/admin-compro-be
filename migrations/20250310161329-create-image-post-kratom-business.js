@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      postNusamarin_id: {
+      postKratomBusiness_id: {
         type: Sequelize.INTEGER
       },
       image: {
