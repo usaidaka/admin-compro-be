@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class PostDiasporaFund extends Model {
     /**
@@ -17,14 +15,18 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  PostDiasporaFund.init({
-    category_id: DataTypes.INTEGER,
-    caption: DataTypes.TEXT,
-    title: DataTypes.TEXT,
-    deletedAt: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'PostDiasporaFund',
-  });
+  PostDiasporaFund.init(
+    {
+      category_id: DataTypes.INTEGER,
+      caption: DataTypes.TEXT,
+      title: DataTypes.TEXT,
+      deletedAt: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "PostDiasporaFund",
+      paranoid: true,
+    }
+  );
   return PostDiasporaFund;
 };

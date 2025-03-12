@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class PostNusamarin extends Model {
+  class Category extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,20 +9,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Category.hasMany(models.PostAquaticDirect, {
+        foreignKey: "category_id",
+        as: "posts",
+        onDelete: "SET NULL",
+      });
     }
   }
-  PostNusamarin.init(
+  Category.init(
     {
-      category_id: DataTypes.INTEGER,
-      caption: DataTypes.TEXT,
-      title: DataTypes.TEXT,
-      deletedAt: DataTypes.DATE,
+      category: DataTypes.STRING,
     },
     {
       sequelize,
-      modelName: "PostNusamarin",
-      paranoid: true,
+      modelName: "Category",
     }
   );
-  return PostNusamarin;
+  return Category;
 };

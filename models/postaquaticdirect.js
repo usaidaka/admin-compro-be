@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class PostAquaticDirect extends Model {
     /**
@@ -15,16 +13,25 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: { name: "postAquaticDirect_id", allowNull: true },
         onDelete: "CASCADE",
       });
+
+      PostAquaticDirect.belongsTo(models.Category, {
+        foreignKey: "category_id",
+        as: "category",
+      });
     }
   }
-  PostAquaticDirect.init({
-    category_id: DataTypes.INTEGER,
-    caption: DataTypes.TEXT,
-    title: DataTypes.TEXT,
-    deletedAt: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'PostAquaticDirect',
-  });
+  PostAquaticDirect.init(
+    {
+      category_id: DataTypes.INTEGER,
+      caption: DataTypes.TEXT,
+      title: DataTypes.TEXT,
+      deletedAt: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "PostAquaticDirect",
+      paranoid: true,
+    }
+  );
   return PostAquaticDirect;
 };

@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class PostKratomBusiness extends Model {
     /**
@@ -13,14 +11,18 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  PostKratomBusiness.init({
-    category_id: DataTypes.INTEGER,
-    caption: DataTypes.TEXT,
-    title: DataTypes.TEXT,
-    deletedAt: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'PostKratomBusiness',
-  });
+  PostKratomBusiness.init(
+    {
+      category_id: DataTypes.INTEGER,
+      caption: DataTypes.TEXT,
+      title: DataTypes.TEXT,
+      deletedAt: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "PostKratomBusiness",
+      paranoid: true,
+    }
+  );
   return PostKratomBusiness;
 };

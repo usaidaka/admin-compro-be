@@ -11,6 +11,7 @@ const Nusamarin = require("./server/api/nusamarin");
 const AquaticDirect = require("./server/api/aquatic-direct");
 const KratomBusiness = require("./server/api/kratom-business");
 const DiasporaFund = require("./server/api/diaspora-fund");
+const Admin = require("./server/api/auth");
 
 dotenv.config();
 app.use(cors());
@@ -81,6 +82,7 @@ app.use("/api/nusamarin", Nusamarin);
 app.use("/api/aquatic-direct", AquaticDirect);
 app.use("/api/kratom-business", KratomBusiness);
 app.use("/api/diaspora-fund", DiasporaFund);
+app.use("/api/admin", Admin);
 
 // Sys ping api
 app.get("/sys/ping", (req, res) => {

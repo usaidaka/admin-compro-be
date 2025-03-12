@@ -15,6 +15,7 @@ const fileName = "server/middlewares/authMiddleware.js";
 // eslint-disable-next-line no-unused-vars
 const validateToken = (request, reply, next) => {
   const { authorization } = request.headers;
+  console.log(authorization, "< authorization");
   try {
     if (_.isEmpty(authorization)) {
       throw Boom.unauthorized();
